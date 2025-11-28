@@ -27,8 +27,10 @@ class View {
   static showResult(isCorrect) {
     if (isCorrect) {
       console.log('✅ Правильно!');
+      return true
     } else {
       console.log(`❌ Неправильно.`);
+      return false
     }
   }
 

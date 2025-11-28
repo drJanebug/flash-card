@@ -10,25 +10,27 @@ class GameController {
   async start() {
     this.view.showWelcome();
     const content = await this.model.readFile();
-    let score = 0
-    const answers = await this.view.getAnswers(content);
     
+    const answers = await this.view.getAnswers(content);
+    let score = 0
     for (let i = 0; i < content.length; i++) {
       for (const key in answers) {
         if(key === content[i].q) {
-          this.view.showResult(String(answers[key]).toLowerCase().trim() === String(content[i].a).toLowerCase().trim());
-          if()
+         const temp = this.view.showResult(String(answers[key]).toLowerCase().trim() === String(content[i].a).toLowerCase().trim());
+          if(temp) {
+            score ++
+          } 
         }  
       }
     }
-    this.view.showGameOver()
+    this.view.showGameOver(score)
   }
 
 }
 
-const model = new Model();
+// const model = new Model();
 
-const controller = new GameController(model, View);
-controller.start();
+// const controller = new GameController(model, View);
+// controller.start();
 
 module.exports = GameController;
