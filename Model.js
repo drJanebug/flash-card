@@ -14,8 +14,10 @@ class Model {
         return { q, a };
       });
     this.questions.push(...dataObj(content));
+    return this.questions
   }
 }
+
 
 
 module.exports = Model
